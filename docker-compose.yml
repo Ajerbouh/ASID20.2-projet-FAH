@@ -5,22 +5,21 @@ services:
     image: webdevops/php-nginx:7.3
     working_dir: /app
     ports:
-      - 80:80
+    - 80:80
     depends_on:
-      - database
+    - database
     volumes:
-      - .:/app
+    - .:/app
     environment:
       WEB_DOCUMENT_ROOT: /app/public
       WEB_DOCUMENT_INDEX: index.php
       PHP_DATE_TIMEZONE: "Europe/Paris"
       PHP_DISPLAY_ERRORS: 1
-
   database:
-    image: mysql:8.0
+    image: mysql:5.7
     volumes:
-      - ./docker/mysqlconf:/etc/mysql/conf.d
-      - ./docker/mysql:/var/lib/mysql
+    - ./docker/mysqlconf:/etc/mysql/conf.d
+    - ./docker/mysql:/var/lib/mysql
     environment:
       MYSQL_DATABASE: projetASI
       MYSQL_ROOT_PASSWORD: root
@@ -28,16 +27,15 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
-      - database
+    - database
     ports:
-      - "8080:80"
+    - "8080:80"
     environment:
       MYSQL_ROOT_PASSWORD: root
       PMA_HOST: database
   mailhog:
     container_name: mailhog
     image: mailhog/mailhog
-    restart: always
     ports:
-      - 1025:1025
-      - 8025:8025
+    - 1025:1025
+    - 8025:8025
