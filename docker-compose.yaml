@@ -5,16 +5,14 @@ services:
         volumes:
             - './src:/app'
     mysql:
-        image: 'mysql:5.7'
+        image: mariadb
         ports:
             - '3306:3306'
-        volumes:
-            - './docker/database:/var/lib/mysql'
         environment:
+            - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=docker
             - MYSQL_USER=user
             - MYSQL_PASSWORD=password
-            - MYSQL_ROOT_PASSWORD=root
     php-fpm:
         build: docker/php
         depends_on:
@@ -23,7 +21,7 @@ services:
         volumes:
             - './src:/usr/share/nginx/html'
     nginx:
-        build: docker/nginx
+        image: nginx
         depends_on:
           - php-fpm
         ports:
@@ -31,10 +29,6 @@ services:
         volumes:
             - './docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
             - './src:/usr/share/nginx/html'
-    mailcatcher:
-        image: 'tophfr/mailcatcher:0.6.5'
-        ports:
-            - '1080:1080'
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         depends_on:
