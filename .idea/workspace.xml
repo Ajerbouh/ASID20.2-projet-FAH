@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7a9f3460-e798-4450-b128-b0c5e0fa4b32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.dist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/console" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bootstrap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/cache.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/routing.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/easy_admin.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/prod/doctrine.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/framework.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/routing.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/web_profiler.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig_extensions.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/validator.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/dev/twig.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/dev/web_profiler.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/easy_admin.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Conference.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Rating.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ConferenceRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/RatingRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony-demo-master.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/.gitignore" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="590521857">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="Dockerfile" value="1" />
+          <entry key="cnf" value="1" />
+          <entry key="php" value="1" />
+          <entry key="yaml" value="3" />
+          <entry key="yml" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Dockerfile" value="1" />
+          <entry key="PHP" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="YAML" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="yaml" value="130" />
+          <entry key="yml" value="159" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="YAML" value="289" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Documents/Cours/api/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docker-compose.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../IPSSI_BLOG_Amine/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Entity/User.php" />
+        <option value="$USER_HOME$/Documents/Cours/api/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/Dockerfile" />
+        <option value="$PROJECT_DIR$/src/docker-compose.yaml" />
+        <option value="$PROJECT_DIR$/docker-compose.yaml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/src/vendor/easycorp/easyadmin-bundle/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/src/vendor/composer" />
+      <path value="$PROJECT_DIR$/src/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/src/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/src/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/src/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/src/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/src/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/src/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/src/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/src/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/orm-pack" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/profiler-pack" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/src/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/src/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/src/vendor/easycorp/easyadmin-bundle" />
+      <path value="$PROJECT_DIR$/src/vendor/pagerfanta/pagerfanta" />
+      <path value="$PROJECT_DIR$/src/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/src/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/src/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/src/vendor/zendframework/zend-eventmanager" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="1027" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ASID20.2-projet-FAH" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASID20.2-projet-FAH" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7a9f3460-e798-4450-b128-b0c5e0fa4b32" name="Default Changelist" comment="" />
+      <created>1549880807620</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549880807620</updated>
+      <workItem from="1549880809838" duration="4514000" />
+      <workItem from="1549898503315" duration="5305000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="9819000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Documents/Cours/test/symfony-demo-master/docker/mysqlconf/my.cnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="51" lean-forward="true" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Cours/test/symfony-demo-master/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Cours/api/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../IPSSI_BLOG_Amine/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

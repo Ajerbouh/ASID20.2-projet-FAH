@@ -1,0 +1,45 @@
+version: '3'
+services:
+    composer:
+        image: 'composer:latest'
+        volumes:
+            - './src:/app'
+    mysql:
+        image: 'mysql:5.7'
+        ports:
+            - '3306:3306'
+        volumes:
+            - './docker/database:/var/lib/mysql'
+        environment:
+            - MYSQL_DATABASE=docker
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=password
+            - MYSQL_ROOT_PASSWORD=root
+    php-fpm:
+        build: docker/php
+        depends_on:
+          - mysql
+        working_dir: /code
+        volumes:
+            - './src:/usr/share/nginx/html'
+    nginx:
+        build: docker/nginx
+        depends_on:
+          - php-fpm
+        ports:
+            - '8081:80'
+        volumes:
+            - './src:/usr/share/nginx/html'
+    mailcatcher:
+        image: 'tophfr/mailcatcher:0.6.5'
+        ports:
+            - '1080:1080'
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+        - mysql
+        ports:
+        - "8080:80"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            PMA_HOST: mysql
