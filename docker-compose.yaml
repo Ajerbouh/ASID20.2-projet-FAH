@@ -19,7 +19,7 @@ services:
         build: docker/php
         depends_on:
           - mysql
-        working_dir: /code
+        working_dir: /usr/share/nginx/html
         volumes:
             - './src:/usr/share/nginx/html'
     nginx:
@@ -27,8 +27,9 @@ services:
         depends_on:
           - php-fpm
         ports:
-            - '8081:80'
+            - '80:80'
         volumes:
+            - './docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
             - './src:/usr/share/nginx/html'
     mailcatcher:
         image: 'tophfr/mailcatcher:0.6.5'
