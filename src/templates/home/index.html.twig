@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+    {% for conference in  conferences %}
+
+        <div class="card">
+            <div class="card-header">{{conference.title|e}}</div>
+            <div class="card-body">
+                <p class="card-text">{{conference.address|e}}</p>
+                <h5 class="card-title">{#{{conference.rating|e}}#}
+                    <div id="heart-existing" class="rating_heart" data-rating="4">
+                        <span class="glyphicon .glyphicon-heart-empty glyphicon-heart"></span>
+                        <span class="glyphicon .glyphicon-heart-empty glyphicon-heart"></span>
+                        <span class="glyphicon .glyphicon-heart-empty glyphicon-heart"></span>
+                        <span class="glyphicon .glyphicon-heart-empty glyphicon-heart"></span>
+                        <span class="glyphicon .glyphicon-heart-empty glyphicon-heart-empty"></span>
+                    </div>
+                </h5>
+                <a href="#" class="btn btn-primary">Details</a>
+
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
