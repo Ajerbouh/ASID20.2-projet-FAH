@@ -7,7 +7,6 @@ use App\Form\LoginUserType;
 use App\Form\RegisterType;
 use App\Form\UpdateUserType;
 use App\Manager\UserManager;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +35,7 @@ class SecurityController extends AbstractController
             $user->setPassword($password);
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('/');
+            return $this->redirectToRoute('home');
         }
         return $this->render('security/register.html.twig', [
             'controller_name' => 'SecurityController',
@@ -45,7 +44,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("user/update/{id}", name="update")
+     * @Route("/admin/user/update/{id}", name="update")
      * @param Request $request
      * @param UserManager $userManager
      * @param int $id
@@ -87,7 +86,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("user/remove/{id}", name="user_remove")
+     * @Route("/admin/user/remove/{id}", name="user_remove")
      * @param UserManager $userManager
      * @param EntityManagerInterface $entityManager
      * @param int $id
@@ -106,6 +105,7 @@ class SecurityController extends AbstractController
         $entityManager->flush();
         //return $this->redirectToRoute('home');
     }
+
 }
 
 

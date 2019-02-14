@@ -32,6 +32,7 @@ class Conference
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="conferences")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $users;
 

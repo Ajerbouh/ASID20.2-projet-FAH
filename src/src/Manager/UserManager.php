@@ -31,7 +31,7 @@ class UserManager
 
     public function getUserByFirstname(string $firstname): ?array
     {
-        return $this->userRepository->findBy(['firstname' => $firstname], ['mail' => 'ASC']);
+        return $this->userRepository->findBy(['firstname' => $firstname], ['email' => 'ASC']);
     }
 
     public function getUserById(int $id): ?User
