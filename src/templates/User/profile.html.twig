@@ -5,10 +5,8 @@
 {% block body %}
 
     {% for user in users %}
-        <p>
-
         {{ user.firstname }}
         <a href="{{ path('user_remove', {'id': user.id}) }}"> Remove {{ user.firstname }}</a>
-        </p>
+        <a href="/admin/user/update/{{user.id}}">Update</a>
     {% endfor %}
 {% endblock %}

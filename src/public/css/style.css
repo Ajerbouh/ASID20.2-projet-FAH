@@ -1,11 +1,11 @@
 .logo {
     background: url(../images/logo_meety.png) center no-repeat;
-    background-size: 110px;
+    background-size: 55px;
     width: 100px;
 }
 
 .navbar {
-    background-image: linear-gradient(#a74240d4, #a9444282,#a944420d);
+    background-color: #d6e9c6;
     border-color: white;
 }
 
@@ -16,12 +16,31 @@
 .card-header {
     padding: .75rem 1.25rem;
     margin-bottom: 0;
-    background-color: rgba(0,0,0,.03);
     border-bottom: 1px solid rgba(0,0,0,.125);
+    border-color: white;
+    background-color: #d6e9c6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3c763d;
+    border-color: white;
+}
+
+.card {
+    margin-top: 49px;
+    border: groove;
+    border-color:#d6e9c6;
+    border-top: white;
+    border-left: white;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    height: 140px;
 }
 
 .glyphicon {
-    color: #a94442;
+    color: #3c763d;
 }
 
 @media (min-width: 48em){
@@ -44,7 +63,6 @@
 }
 @media (min-width: 576px) {
     .container {
-        width: 540px;
         max-width: 100%;
     }
 }
