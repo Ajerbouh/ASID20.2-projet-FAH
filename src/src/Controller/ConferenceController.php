@@ -5,9 +5,8 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-// use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ConferenceRepository;
@@ -19,7 +18,9 @@ class ConferenceController extends AbstractController
     //### ROLE_USER ####/
 
     /**
-     * @Route("/conference/list/rated", name="conference_list_rated")
+     * @Route("conference/list/rated", name="conference_list_rated")
+     * @param ConferenceRepository $conferenceRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function conferenceListRated(ConferenceRepository $conferenceRepository)
     {
@@ -33,6 +34,8 @@ class ConferenceController extends AbstractController
 
     /**
      * @Route("/conference/list/unrated", name="conference_list_unrated")
+     * @param ConferenceRepository $conferenceRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function conferenceListUnrated(ConferenceRepository $conferenceRepository)
     {
@@ -46,10 +49,14 @@ class ConferenceController extends AbstractController
 
     /**
      * @Route("/conference/search/{keyword}", name="conference_search")
+     * @param ConferenceRepository $conferenceRepository
+     * @param string $keyword
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function conferenceSearch(ConferenceRepository $conferenceRepository, string $keyword)
     {
-        $conferences = $conferenceRepository->searchKeyword($keyword);
+        $conferences = $conferenceRepository->fin;
+
         
         return $this->render('conference/list.html.twig', [
             'conferences' => $conferences,
@@ -58,7 +65,9 @@ class ConferenceController extends AbstractController
     }
 
     /**
-     * @Route("/admin/conference/read/{id}", name="conference_read")
+     * @Route("/conference/read/{id}", name="conference_read")
+     * @param Conference $conference
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function id(Conference $conference)
     {
@@ -71,8 +80,10 @@ class ConferenceController extends AbstractController
 
     /**
      * @Route("/admin/conference/create", name="admin_conference_create")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function adminConferenceCreate(ConferenceRepository $conferenceRepository, Request $request)
+    public function adminConferenceCreate(Request $request)
     {
         $conference = new Conference();
         $form = $this->createForm(ConferenceType::class, $conference);
@@ -85,7 +96,6 @@ class ConferenceController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('conference_read', array('id' => $conference->getId()) );
-            // return $this->redirectToRoute('conference_read', ['id', $conference->getId()]);
         }
 
         return $this->render('conference/create.html.twig', [
@@ -95,18 +105,23 @@ class ConferenceController extends AbstractController
 
     /**
      * @Route("/admin/conference/read/{id}", name="admin_conference_read")
+     * @param Conference $conference
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function adminConfRead(Conference $conference)
+    public function adminConferenceRead(Conference $conference)
     {
         return $this->render('conference/read.html.twig', [
             'conference' => $conference,
         ]);
-    }  
+    }
 
     /**
      * @Route("/admin/conference/update/{id}", name="admin_conference_update")
+     * @param Request $request
+     * @param Conference $conference
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function adminConferenceUpdate(Conference $conference)
+    public function adminConferenceUpdate(Request $request, Conference $conference)
     {
         $form = $this->createForm(ConferenceType::class, $conference);
         $form->handleRequest($request);
@@ -116,8 +131,8 @@ class ConferenceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($conference);
             $entityManager->flush();
-
-            return $this->redirectToRoute('conference_read', ['id', $conference->id]);
+//to
+            return $this->redirectToRoute('conference_read', ['id', $conference->getId()]);
         }
 
         return $this->render('conference/create.html.twig', [
@@ -127,18 +142,20 @@ class ConferenceController extends AbstractController
 
 
     // TODO: test if the foreach's flush is needed
+
     /**
      * @Route("/admin/conference/delete/{id}", name="admin_conference_delete")
+     * @param Conference $conference
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function adminConfDelete(Conference $conference, EntityManagerInterface $entityManager)
     {
         foreach($conference->getRatings() as $rating) {
 
             $entityManager->remove($rating); 
-            // NEED TO FLUSH FOR EACH REMOVE ???
-            // $entityManager->flush();
+
         }
-        // upload rating remove to enabled the conference removing
         $entityManager->flush();
         
         $entityManager->remove($conference);

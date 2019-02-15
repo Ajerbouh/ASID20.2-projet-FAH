@@ -88,7 +88,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/admin/user/list", name="user_list")
      * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
