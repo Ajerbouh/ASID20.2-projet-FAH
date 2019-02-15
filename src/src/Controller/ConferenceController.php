@@ -55,8 +55,7 @@ class ConferenceController extends AbstractController
      */
     public function conferenceSearch(ConferenceRepository $conferenceRepository, string $keyword)
     {
-        $conferences = $conferenceRepository->fin;
-
+        $conferences = $conferenceRepository->searchKeyword($keyword);
         
         return $this->render('conference/list.html.twig', [
             'conferences' => $conferences,

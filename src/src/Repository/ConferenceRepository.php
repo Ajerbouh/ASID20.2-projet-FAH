@@ -24,20 +24,6 @@ class ConferenceRepository extends ServiceEntityRepository
         $limit  = $numberPerPage;
         $offset = $numberPerPage * $numberPage;
 
-        // var_dump($limit);
-        // var_dump($offset);
-
-        // select conferences with average for each conference
-        /*
-        $qb = $this->createQueryBuilder('c');
-        
-        $qb
-            ->select('c, u, AVG(ratings.value) as rating')
-            ->join("c.ratings", "ratings")
-            ->join("ratings.user", "u")
-            ->orderBy('rating', 'DESC')
-        ;
-        */
 
         $qb = $this->createQueryBuilder('c');
         $qb
@@ -54,18 +40,6 @@ class ConferenceRepository extends ServiceEntityRepository
             ->getResult()
         ;
 
-         /*
-        return $this->createQueryBuilder('c')
-            ->leftJoin("c.ratings", "ratings")
-            ->Where('c.id IS NOT NULL')
-            ->GroupBy('c.id')
-            ->having('count(ratings) = 0')
-            ->setFirstResult( $offset )
-            ->setMaxResults( $limit )
-            ->getQuery()
-            ->getResult()
-        ;
-        */
     }
 
 
@@ -98,39 +72,11 @@ class ConferenceRepository extends ServiceEntityRepository
     public function searchKeyword(string $keyword)
     {
         return $this->createQueryBuilder('c')
-            ->Where("c.title LIKE '%:keyword%'")
-            ->setParameter('keyword', $keyword)
+            ->Where('c.title LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
             ->getQuery()
             ->getResult()
         ;
     }
 
-    // /**
-    //  * @return Conference[] Returns an array of Conference objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Conference
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
