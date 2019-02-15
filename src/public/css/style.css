@@ -1,0 +1,90 @@
+.logo {
+    background: url(../images/logo_meety.png) center no-repeat;
+    background-size: 55px;
+    width: 100px;
+}
+
+.navbar {
+    background-color: #d6e9c6;
+    border-color: #d6e9c6;
+    box-shadow: 6px 5px 24px #d6e9c6;
+
+}
+
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-color: white;
+    background-color: #d6e9c6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3c763d;
+    border-color: white;
+}
+
+.card {
+    margin-top: 49px;
+    border: groove;
+    border-color: #d6e9c642;
+    border-top: white;
+    border-left: white;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    height: 140px;
+
+    box-shadow: 6px 3px 18px #d6e9c678;
+}
+
+.glyphicon {
+    color: #3c763d;
+}
+
+@media (min-width: 48em){
+    .container {
+        max-width: 46rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 960px;
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+        max-width: 100%;
+    }
+}
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+@media (min-width: 576px) {
+    .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}

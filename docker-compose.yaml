@@ -1,0 +1,45 @@
+version: '3'
+services:
+    composer:
+        image: 'composer:latest'
+        volumes:
+            - './src:/app'
+    mysql:
+        image: mariadb
+        ports:
+            - '3306:3306'
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=docker
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=password
+    php-fpm:
+        build: docker/php
+        depends_on:
+          - mysql
+        working_dir: /usr/share/nginx/html
+        volumes:
+            - './src:/usr/share/nginx/html'
+    nginx:
+        image: nginx
+        depends_on:
+          - php-fpm
+        ports:
+            - '80:80'
+        volumes:
+            - './docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
+            - './src:/usr/share/nginx/html'
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        depends_on:
+        - mysql
+        ports:
+        - "8080:80"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            PMA_HOST: mysql
+    mailcatcher:
+        image: yappabe/mailcatcher
+        ports:
+        - 1025:1025
+        - 1080:1080

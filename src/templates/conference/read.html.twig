@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meety Conference View{% endblock %}
+
+{% block body %}
+{% if conference is defined %}
+<article>
+    <h1>{{ include('conference/detail.html.twig', {'conference' : conference}) }}</h1>
+
+    {% if conference.address is defined %}
+        <p>{{ conference.address|e }}</p>
+    {% endif %}
+
+    {% if conference.ratings is not empty %}
+    <ul>
+        {% for rating in conference.ratings %}
+            <li>
+                Voted ({{ rating.value }}) 
+                By {{ rating.user.firstname|e|lower }} {{ rating.user.lastname|e|upper }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</article>
+{% endif %}
+{% endblock %}

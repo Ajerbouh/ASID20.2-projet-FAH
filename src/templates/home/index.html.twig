@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {% for conference in  conferences %}
+
+        <div class="card">
+            <div class="card-header">{{conference.title|e}}</div>
+            <div class="card-body">
+                <p class="card-text">{{conference.address|e}}</p>
+                <h5 class="card-title">{#{{conference.rating|e}}#}
+                    <div class="heart_rating is-heart" data-rating='{{conference.rating}}' data-id="{{conference.id}}"></div>
+                </h5>
+                <a href="#" class="btn btn-primary">Details</a>
+
+            </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
