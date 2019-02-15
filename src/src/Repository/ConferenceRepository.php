@@ -24,6 +24,7 @@ class ConferenceRepository extends ServiceEntityRepository
         $limit  = $numberPerPage;
         $offset = $numberPerPage * $numberPage;
 
+
         $qb = $this->createQueryBuilder('c');
         $qb
             ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
@@ -37,10 +38,12 @@ class ConferenceRepository extends ServiceEntityRepository
             ->setMaxResults( $limit )
         ;
 
+
         return $qb
             ->getQuery()
             ->getResult()
         ;
+
     }
 
 
@@ -97,39 +100,11 @@ class ConferenceRepository extends ServiceEntityRepository
     public function searchKeyword(string $keyword)
     {
         return $this->createQueryBuilder('c')
-            ->Where("c.title LIKE '%:keyword%'")
-            ->setParameter('keyword', $keyword)
+            ->Where('c.title LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
             ->getQuery()
             ->getResult()
         ;
     }
 
-    // /**
-    //  * @return Conference[] Returns an array of Conference objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Conference
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

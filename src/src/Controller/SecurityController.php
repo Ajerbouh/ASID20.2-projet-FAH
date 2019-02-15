@@ -67,10 +67,12 @@ class SecurityController extends AbstractController
      * @param User $user
      * @param EntityManagerInterface $entityManager
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param UserRepository $userRepository
+     * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      * @ParamConverter("update", options={"mapping"={"id"="id"}})
      */
-    public function update(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function update(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository, int $id)
     {
         $form = $this->createForm(UpdateUserType::class, $user);
         $form->handleRequest($request);
@@ -81,14 +83,15 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
         }
-
+        $users = $userRepository->find($id);
         return $this->render('User/update.html.twig', [
+            'user' => $users,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/admin/user/list", name="user_list")
      * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */

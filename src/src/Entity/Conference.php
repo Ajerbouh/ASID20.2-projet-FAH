@@ -30,11 +30,6 @@ class Conference
      */
     private $address;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="conferences")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $users;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Rating", mappedBy="conference")
@@ -43,7 +38,6 @@ class Conference
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
         $this->ratings = new ArrayCollection();
     }
 
@@ -77,34 +71,6 @@ class Conference
     }
 
     /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addConference($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeConference($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Rating[]
      */
     public function getRatings(): Collection
@@ -122,6 +88,10 @@ class Conference
         return $this;
     }
 
+    public function setRating(Rating $rating): self
+    {
+        return $this->addRating($rating);
+    }
     public function removeRating(Rating $rating): self
     {
         if ($this->ratings->contains($rating)) {
