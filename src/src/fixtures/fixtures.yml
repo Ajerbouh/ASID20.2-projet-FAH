@@ -1,0 +1,16 @@
+App\Entity\User:
+  user_{1..10}:
+    firstname: <firstname()>
+    lastname: <lastname()>
+    mail: <email()>
+    password: <password()>
+App\Entity\Conference:
+  conference_{1..25}:
+    title: <title()>
+    address: <address()>
+    rating: '@rating*'
+App\Entity\Rating:
+  rating_{1..45}:
+    value: <numberBetween(1, 5)>
+    user: '@user*'
+    conference: '@conference*'

@@ -41,7 +41,7 @@ class ConferenceRepository extends ServiceEntityRepository
 
         $qb = $this->createQueryBuilder('c');
         $qb
-            ->addSelect('c.id, c.title, (c.id) as id_conf, (c.title) as titleConf')
+            ->addSelect('c.id, c.title, c.address, (c.id) as id_conf, (c.title) as titleConf')
             ->join('c.ratings', 'r')
             ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
             ->groupBy('c.id')
