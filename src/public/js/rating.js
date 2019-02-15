@@ -1,5 +1,16 @@
 var __slice = [].slice;
 
+function httpGetAsync(Url, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+
 (function($, window) {
     var Heart;
 
@@ -11,14 +22,14 @@ var __slice = [].slice;
         };
 
         function Heart($el, options) {
-            var i, _, _ref,
+            var i, s, _ref,
                 _this = this;
 
             this.options = $.extend({}, this.defaults, options);
             this.$el = $el;
             _ref = this.defaults;
             for (i in _ref) {
-                _ = _ref[i];
+                s = _ref[i];
                 if (this.$el.data(i) != null) {
                     this.options[i] = this.$el.data(i);
                 }
@@ -74,7 +85,6 @@ var __slice = [].slice;
                 return this.$el.find('span').removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
             }
         };
-
         return Heart;
 
     })();
@@ -103,12 +113,13 @@ $(function() {
 });
 
 $( document ).ready(function() {
-
-    $('#hearts').on('heart_rating:change', function(e, value){
-        $('#count').html(value);
-    });
-
-    $('#is-heart').on('heart_rating:change', function(e, value){
-        $('#count-existing').html(value);
+    $('.is-heart').on('heart_rating:change', function(e, value){
+        console.log(value);
+        console.log($('.is-heart').data("id"));
+        var id = $('.is-heart').data("id");
+        var Url = '/rating/create/'+ id + '/' + value;
+        window.location = Url;
+       // httpGetAsync(Url, callback);
     });
 });
+

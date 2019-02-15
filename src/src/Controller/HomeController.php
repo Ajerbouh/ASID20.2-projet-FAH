@@ -14,18 +14,21 @@ class HomeController extends AbstractController
     {
         $conferences =[
             0 => [
+                'id' => '1',
                 'title' => 'Bonjour',
                 'rating' => 1,
                 'address' => '1 Avenue Charles de Gaulle 93270 Sevran',
                 'users' => 'le chef',
             ],
             1 => [
+                'id' => '2',
                 'title' => 'Salut',
                 'rating' => 3,
                 'address' => '26 Rue de la mort 97125 Bouilantes',
                 'users' => 'le roi',
             ],
             2 => [
+                'id' => '3',
                 'title' => 'Hello',
                 'rating' => 5,
                 'address' => '10 Chemin du Marais du Soucis 93270 Sevran',
