@@ -48,11 +48,6 @@ class User implements UserInterface
      */
     private $ratings;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Conference", inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $conferences;
 
     /**
      * @ORM\Column(type="simple_array")
@@ -62,7 +57,6 @@ class User implements UserInterface
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
-        $this->conferences = new ArrayCollection();
         $this->roles = array('ROLE_USER');
     }
 
@@ -137,6 +131,11 @@ class User implements UserInterface
         return $this;
     }
 
+    public function setRating(Rating $rating): self
+    {
+        return $this->addRating($rating);
+    }
+
     public function removeRating(Rating $rating): self
     {
         if ($this->ratings->contains($rating)) {
@@ -150,31 +149,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Conference[]
-     */
-    public function getConferences(): Collection
-    {
-        return $this->conferences;
-    }
-
-    public function addConference(Conference $conference): self
-    {
-        if (!$this->conferences->contains($conference)) {
-            $this->conferences[] = $conference;
-        }
-
-        return $this;
-    }
-
-    public function removeConference(Conference $conference): self
-    {
-        if ($this->conferences->contains($conference)) {
-            $this->conferences->removeElement($conference);
-        }
-
-        return $this;
-    }
 
     /**
      * Returns the roles granted to the user.
