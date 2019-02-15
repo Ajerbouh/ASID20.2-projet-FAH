@@ -1,0 +1,6 @@
+<a href="{{ path('conference_read', {'id': conference.id}) }}">
+    {{ conference.title|e }}
+    {% if  conference.rating is defined %} 
+        ({{conference.rating|round(0, 'common')}})
+    {% endif %}
+</a>
