@@ -1,29 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Meety Home Page{% endblock %}
+{% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
 
-<section>
-    <h1>All conferences</h1>
-    {% if numPage is defined %}
-    <p>Page {{ numPage + 1 }}</p>
-    {% endif %}
-    <div>
-        {% for conference in conferences %}
-        <article>
-            {{ include('conference/detail.html.twig', {'conference' : conference}) }}
-        </article>
-        {% endfor %}
+    <div class="container">
+    {% for conference in  conferences %}
+
+        <div class="card">
+            <div class="card-header">{{conference.title|e}}</div>
+            <div class="card-body">
+                <p class="card-text">{{conference.address|e}}</p>
+                <h5 class="card-title">{#{{conference.rating|e}}#}
+                    <div id="is-heart" class="heart_rating" data-rating='4'></div>
+                </h5>
+                <a href="#" class="btn btn-primary">Details</a>
+
+            </div>
+        </div>
+    {% endfor %}
     </div>
-    <div>
-        {% if numPagePrevious is defined %}
-            <a href="{{ path('page',{'numPage': numPagePrevious }) }}" role="button">Previous</a>
-        {% endif %}
-        {% if numPageNext is defined %}
-            <a href="{{ path('page',{'numPage': numPageNext }) }}" role="button">Next</a>
-        {% endif %}
-    </div>
-</section>
 
 {% endblock %}

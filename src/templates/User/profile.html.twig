@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block body %}
+
+    {% for user in users %}
+        {{ user.firstname }}
+        <a href="{{ path('user_remove', {'id': user.id}) }}"> Remove {{ user.firstname }}</a>
+    {% endfor %}
+{% endblock %}

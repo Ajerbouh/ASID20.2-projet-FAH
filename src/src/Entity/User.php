@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -19,16 +21,19 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastname;
 
     /**
+     * @Assert\Email()
      * @ORM\Column(type="string", length=255)
      */
     private $mail;
@@ -45,13 +50,20 @@ class User
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Conference", inversedBy="users")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $conferences;
+
+    /**
+     * @ORM\Column(type="simple_array")
+     */
+    private $roles;
 
     public function __construct()
     {
         $this->ratings = new ArrayCollection();
         $this->conferences = new ArrayCollection();
+        $this->roles = array('ROLE_USER');
     }
 
     public function getId(): ?int
@@ -161,6 +173,67 @@ class User
             $this->conferences->removeElement($conference);
         }
 
+        return $this;
+    }
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return array (Role|string)[] The user roles
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @param mixed $roles
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
         return $this;
     }
 }
