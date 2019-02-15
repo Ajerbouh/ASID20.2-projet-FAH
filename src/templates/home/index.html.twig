@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     {% for conference in  conferences %}
 
         <div class="card">
@@ -12,7 +11,7 @@
             <div class="card-body">
                 <p class="card-text">{{conference.address|e}}</p>
                 <h5 class="card-title">{#{{conference.rating|e}}#}
-                    <div id="is-heart" class="heart_rating" data-rating='4'></div>
+                    <div class="heart_rating is-heart" data-rating='{{conference.rating}}' data-id="{{conference.id}}"></div>
                 </h5>
                 <a href="#" class="btn btn-primary">Details</a>
 

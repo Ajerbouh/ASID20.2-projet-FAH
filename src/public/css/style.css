@@ -6,7 +6,9 @@
 
 .navbar {
     background-color: #d6e9c6;
-    border-color: white;
+    border-color: #d6e9c6;
+    box-shadow: 6px 5px 24px #d6e9c6;
+
 }
 
 
@@ -30,13 +32,15 @@
 .card {
     margin-top: 49px;
     border: groove;
-    border-color:#d6e9c6;
+    border-color: #d6e9c642;
     border-top: white;
     border-left: white;
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 0px;
     height: 140px;
+
+    box-shadow: 6px 3px 18px #d6e9c678;
 }
 
 .glyphicon {
