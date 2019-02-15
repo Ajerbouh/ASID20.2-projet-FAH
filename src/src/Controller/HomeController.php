@@ -5,70 +5,53 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ConferenceRepository;
+use App\Entity\Conference;
+
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
+     * @param ConferenceRepository $conferenceRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index()
+    public function index(ConferenceRepository $conferenceRepository)
     {
-        $conferences =[
-            0 => [
-                'id' => '1',
-                'title' => 'Bonjour',
-                'rating' => 1,
-                'address' => '1 Avenue Charles de Gaulle 93270 Sevran',
-                'users' => 'le chef',
-            ],
-            1 => [
-                'id' => '2',
-                'title' => 'Salut',
-                'rating' => 3,
-                'address' => '26 Rue de la mort 97125 Bouilantes',
-                'users' => 'le roi',
-            ],
-            2 => [
-                'id' => '3',
-                'title' => 'Hello',
-                'rating' => 5,
-                'address' => '10 Chemin du Marais du Soucis 93270 Sevran',
-                'users' => 'le chef',
-            ],
-        ];
-
-        return $this->render('home/index.html.twig', [
-            'conferences' => $conferences,
-        ]);
+        return $this->page($conferenceRepository, 0);
     }
 
-    /*/**
-    * @Route("/registration", name="home")
-    */
-   /* public function Registration()
+    /**
+     * @Route("/page/{numPage}", name="page")
+     * @param ConferenceRepository $conferenceRepository
+     * @param int $numberPage
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function page(ConferenceRepository $conferenceRepository, int $numberPage)
     {
-        $conferences =[
-            0 => [
-                'title' => 'Bonjour',
-                'rating' => 1,
-                'address' => '1 Avenue Charles de Gaulle 93270 Sevran',
-                'users' => 'le chef',
-            ],
-            1 => [
-                'title' => 'Salut',
-                'rating' => 3,
-                'address' => '26 Rue de la mort 97125 Bouilantes',
-                'users' => 'le roi',
-            ],
-            2 => [
-                'title' => 'Hello',
-                'rating' => 5,
-                'address' => '10 Chemin du Marais du Soucis 93270 Sevran',
-                'users' => 'le chef',
-            ],
-        ];
-
+        $numberPerPage = 10;
+        /*
+        $offset = ($numPage * $numberPerPage);
+        
+        $conferences = $conferenceRepository->findBy(
+            array(),
+            null,
+            $numberPerPage,
+            $offset
+        );
+        */
+        $conferences = $conferenceRepository->findPage( $numberPerPage, $numberPage );
+        
+        // echo '<pre>';
+        // var_dump($conferences);
+        // echo '</pre>';
+        
+        // TODO : check if next or previous page exist
         return $this->render('home/index.html.twig', [
-            'conferences' => $conferences,
+            'conferences'     => $conferences,
+            'numPagePrevious' => $numberPage - 1,
+            'numPage'         => $numberPage,
+            'numPageNext'     => $numberPage + 1,
         ]);
-    }*/
+    }
 }
