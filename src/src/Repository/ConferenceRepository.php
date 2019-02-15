@@ -19,53 +19,31 @@ class ConferenceRepository extends ServiceEntityRepository
         parent::__construct($registry, Conference::class);
     }
     
-    public function findPage( int $numberPerPage, int $numberPage )
+    public function findPage( int $numberPerPage, int $numberPage, int $userId )
     {
         $limit  = $numberPerPage;
         $offset = $numberPerPage * $numberPage;
 
-        // var_dump($limit);
-        // var_dump($offset);
-
-        // select conferences with average for each conference
-        /*
-        $qb = $this->createQueryBuilder('c');
-        
-        $qb
-            ->select('c, u, AVG(ratings.value) as rating')
-            ->join("c.ratings", "ratings")
-            ->join("ratings.user", "u")
-            ->orderBy('rating', 'DESC')
-        ;
-        */
 
         $qb = $this->createQueryBuilder('c');
         $qb
-            ->addSelect('c.id, c.title, (c.id) as id_conf, (c.title) as titleConf')
+            ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
             ->join('c.ratings', 'r')
             ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
             ->groupBy('c.id')
             ->orderBy('rating', 'DESC')
+            ->setParameter('user_id', $userId)
             ->setFirstResult( $offset )
             ->setMaxResults( $limit )
         ;
 
-        return $qb->getQuery()
-            ->getResult()
-        ;
 
-         /*
-        return $this->createQueryBuilder('c')
-            ->leftJoin("c.ratings", "ratings")
-            ->Where('c.id IS NOT NULL')
-            ->GroupBy('c.id')
-            ->having('count(ratings) = 0')
-            ->setFirstResult( $offset )
-            ->setMaxResults( $limit )
+        return $qb
             ->getQuery()
             ->getResult()
         ;
-        */
+
     }
 
 
@@ -73,18 +51,26 @@ class ConferenceRepository extends ServiceEntityRepository
 
     public function findUnrated()
     {
-        return $this->createQueryBuilder('c')
-            ->leftJoin("c.ratings", "ratings")
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
+            ->join('c.ratings', 'r')
+            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
             ->Where('c.id IS NOT NULL')
-            ->GroupBy('c.id')
+            ->groupBy('c.id')
             ->having('count(ratings) = 0')
-            ->getQuery()
-            ->getResult()
+            ->orderBy('rating', 'DESC')
         ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 
     public function findRated()
     {
+        /*
         return $this->createQueryBuilder('c')
             ->leftJoin("c.ratings", "ratings")
             ->Where('c.id IS NOT NULL')
@@ -93,44 +79,32 @@ class ConferenceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+        */
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
+            ->join('c.ratings', 'r')
+            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
+            ->Where('c.id IS NOT NULL')
+            ->groupBy('c.id')
+            ->having('count(ratings) > 0')
+            ->orderBy('rating', 'DESC')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 
     public function searchKeyword(string $keyword)
     {
         return $this->createQueryBuilder('c')
-            ->Where("c.title LIKE '%:keyword%'")
-            ->setParameter('keyword', $keyword)
+            ->Where('c.title LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
             ->getQuery()
             ->getResult()
         ;
     }
 
-    // /**
-    //  * @return Conference[] Returns an array of Conference objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Conference
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

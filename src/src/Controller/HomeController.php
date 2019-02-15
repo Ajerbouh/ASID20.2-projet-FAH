@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ConferenceRepository;
@@ -22,7 +24,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/page/{numPage}", name="page")
+     * @Route("/page/{numberPage}", name="page")
      * @param ConferenceRepository $conferenceRepository
      * @param int $numberPage
      * @return \Symfony\Component\HttpFoundation\Response
@@ -40,7 +42,7 @@ class HomeController extends AbstractController
             $offset
         );
         */
-        $conferences = $conferenceRepository->findPage( $numberPerPage, $numberPage );
+        $conferences = $conferenceRepository->findPage( $numberPerPage, $numberPage, $this->getUser()->getId() );
         
         // echo '<pre>';
         // var_dump($conferences);

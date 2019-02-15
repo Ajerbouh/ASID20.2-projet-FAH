@@ -18,7 +18,8 @@ class UpdateUserType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('mail', EmailType::class)
-            ->add('password', PasswordType::class)
+            ->add('confirm password', PasswordType::class, [
+            ])
             ->add('submit', SubmitType::class)
         ;
     }
