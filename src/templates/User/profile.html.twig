@@ -7,5 +7,6 @@
     {% for user in users %}
         {{ user.firstname }}
         <a href="{{ path('user_remove', {'id': user.id}) }}"> Remove {{ user.firstname }}</a>
+        <a href="/admin/user/update/{{user.id}}">Update</a>
     {% endfor %}
 {% endblock %}
