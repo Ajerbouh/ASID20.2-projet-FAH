@@ -38,3 +38,8 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: root
             PMA_HOST: mysql
+    mailcatcher:
+        image: yappabe/mailcatcher
+        ports:
+        - 1025:1025
+        - 1080:1080
