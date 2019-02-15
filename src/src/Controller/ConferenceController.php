@@ -2,42 +2,69 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+// use Symfony\Component\Routing\Annotation\Route;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ConferenceRepository;
 use App\Entity\Conference;
-// use App\Form\ConferenceType;
-
+use App\Form\ConferenceType;
 
 class ConferenceController extends AbstractController
 {
-    //### ROLE_conference ####/
+    //### ROLE_USER ####/
 
     /**
-     * @Route("/conf/list/rated", name="conf_list_rated")
+     * @Route("/conference/list/rated", name="conference_list_rated")
      */
-    public function confListRated(ConferenceRepository $confRepository)
+    public function conferenceListRated(ConferenceRepository $conferenceRepository)
     {
-        //
+        $conferences = $conferenceRepository->findRated();
+
+        return $this->render('conference/list.html.twig', [
+            'conferences' => $conferences,
+            'title'       => 'Rated Conferences',
+        ]);
     }
 
     /**
-     * @Route("/conf/list/unrated", name="conf_list_unrated")
+     * @Route("/conference/list/unrated", name="conference_list_unrated")
      */
-    public function confListUnrated(ConferenceRepository $confRepository)
+    public function conferenceListUnrated(ConferenceRepository $conferenceRepository)
     {
-        //
+        $conferences = $conferenceRepository->findUnrated();
+        
+        return $this->render('conference/list.html.twig', [
+            'conferences' => $conferences,
+            'title'       => 'Unrated Conferences',
+        ]);
     }
 
     /**
-     * @Route("/conf/read/{id}", name="conf_read")
+     * @Route("/conference/search/{keyword}", name="conference_search")
      */
-    public function confRead(ConferenceRepository $confRepository)
+    public function conferenceSearch(ConferenceRepository $conferenceRepository, string $keyword)
     {
-        //
+        $conferences = $conferenceRepository->searchKeyword($keyword);
+        
+        return $this->render('conference/list.html.twig', [
+            'conferences' => $conferences,
+            'title' => "Search result for '".$keyword."'",
+        ]);
+    }
+
+    /**
+     * @Route("/admin/conference/read/{id}", name="conference_read")
+     */
+    public function id(Conference $conference)
+    {
+        return $this->render('conference/read.html.twig', [
+            'conference' => $conference,
+        ]);
     }
 
     //### ROLE_ADMIN ####/
@@ -45,32 +72,78 @@ class ConferenceController extends AbstractController
     /**
      * @Route("/admin/conference/create", name="admin_conference_create")
      */
-    public function adminConferenceCreate(conferenceRepository $conferenceRepository)
+    public function adminConferenceCreate(ConferenceRepository $conferenceRepository, Request $request)
     {
-        //
+        $conference = new Conference();
+        $form = $this->createForm(ConferenceType::class, $conference);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($conference);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('conference_read', array('id' => $conference->getId()) );
+            // return $this->redirectToRoute('conference_read', ['id', $conference->getId()]);
+        }
+
+        return $this->render('conference/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
-     * @Route("admin/conference/read/{id}", name="admin_conference_read")
+     * @Route("/admin/conference/read/{id}", name="admin_conference_read")
      */
-    public function adminConferenceRead(conferenceRepository $conferenceRepository)
+    public function adminConfRead(Conference $conference)
     {
-        //
-    }
+        return $this->render('conference/read.html.twig', [
+            'conference' => $conference,
+        ]);
+    }  
 
     /**
-     * @Route("admin/conference/update/{id}", name="admin_conference_update")
+     * @Route("/admin/conference/update/{id}", name="admin_conference_update")
      */
-    public function adminConferenceUpdate(conferenceRepository $conferenceRepository)
+    public function adminConferenceUpdate(Conference $conference)
     {
-        //
+        $form = $this->createForm(ConferenceType::class, $conference);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($conference);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('conference_read', ['id', $conference->id]);
+        }
+
+        return $this->render('conference/create.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
+
+    // TODO: test if the foreach's flush is needed
     /**
-     * @Route("admin/conference/delete/{id}", name="admin_conference_delete")
+     * @Route("/admin/conference/delete/{id}", name="admin_conference_delete")
      */
-    public function adminConferenceDelete(conferenceRepository $conferenceRepository)
+    public function adminConfDelete(Conference $conference, EntityManagerInterface $entityManager)
     {
-        //
+        foreach($conference->getRatings() as $rating) {
+
+            $entityManager->remove($rating); 
+            // NEED TO FLUSH FOR EACH REMOVE ???
+            // $entityManager->flush();
+        }
+        // upload rating remove to enabled the conference removing
+        $entityManager->flush();
+        
+        $entityManager->remove($conference);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('home');
     }
 }

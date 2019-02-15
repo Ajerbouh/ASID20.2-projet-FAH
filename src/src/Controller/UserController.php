@@ -13,40 +13,27 @@ use App\Entity\User;
 
 class UserController extends AbstractController
 {
-    //### ANONYMOUS ####/
-
-    /**
-     * @Route("/anon/login", name="login")
-     */
-    public function login(UserRepository $userRepository)
-    {
-        //
-    }
-
-    /**
-     * @Route("/anon/signup", name="signup")
-     */
-    public function signup(UserRepository $userRepository)
-    {
-        //
-    }
-
     //### ROLE_USER ####/
 
     /**
-     * @Route("/user/update", name="user_update")
+     * @Route("/user/profile", name="user_profile")
      */
-    public function userUpdate(UserRepository $userRepository)
+    public function userProfile(UserRepository $userRepository)
     {
-        //
+        $currentUser = $this->getUser();
+        return $this->render('user/profile.html.twig', [
+            'user' => $currentUser,
+        ]);
     }
-
+    
     /**
-     * @Route("/user/delete", name="user_delete")
+     * @Route("/user/read/{id}", name="user_read")
      */
-    public function userDelete(UserRepository $userRepository)
+    public function userRead(User $user)
     {
-        //
+        return $this->render('user/profile.html.twig', [
+            'user' => $user,
+        ]);
     }
 
     //### ROLE_ADMIN ####/
@@ -56,39 +43,11 @@ class UserController extends AbstractController
      */
     public function adminUserList(UserRepository $userRepository)
     {
-        //
-    }
+        $users = $userRepository->findAll();
 
-    /**
-     * @Route("/admin/user/create", name="admin_user_create")
-     */
-    public function adminUserCreate(UserRepository $userRepository)
-    {
-        //
-    }
-
-    /**
-     * @Route("admin/user/read/{id}", name="admin_user_read")
-     */
-    public function adminUserRead(UserRepository $userRepository)
-    {
-        //
-    }
-
-    /**
-     * @Route("admin/user/update/{id}", name="admin_user_update")
-     */
-    public function adminUserUpdate(UserRepository $userRepository)
-    {
-        //
-    }
-
-    /**
-     * @Route("admin/user/delete/{id}", name="admin_user_delete")
-     */
-    public function adminUserDelete(UserRepository $userRepository)
-    {
-        //
+        return $this->render('user/list.html.twig', [
+            'users' => $users,
+        ]);
     }
 
 }

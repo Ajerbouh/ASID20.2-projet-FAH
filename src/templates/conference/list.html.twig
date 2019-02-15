@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meety {{ title|e }}{% endblock %}
+
+{% block body %}
+
+<section>
+    <h1>{{ title|e }}</h1>
+    <div>
+        {% for conference in conferences %}
+        <div>
+            {{ include('conference/detail.html.twig', {'conference' : conference}) }}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
