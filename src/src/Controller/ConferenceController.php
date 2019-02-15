@@ -18,7 +18,7 @@ class ConferenceController extends AbstractController
     //### ROLE_USER ####/
 
     /**
-     * @Route("conference/list/rated", name="conference_list_rated")
+     * @Route("/conference/list/rated", name="conference_list_rated")
      * @param ConferenceRepository $conferenceRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
