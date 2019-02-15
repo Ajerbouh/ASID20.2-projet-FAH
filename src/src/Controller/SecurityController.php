@@ -8,6 +8,7 @@ use App\Form\RegisterType;
 use App\Form\UpdateUserType;
 use App\Manager\UserManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -87,14 +88,13 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/admin/user/remove/{id}", name="user_remove")
-     * @param UserManager $userManager
+     * @param User $user
      * @param EntityManagerInterface $entityManager
-     * @param int $id
-     * @return void
+     * @ParamConverter("user_remove", options={"mapping"={"id"="id"}})
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function remove(UserManager $userManager, EntityManagerInterface $entityManager, int $id)
+    public function remove(User $user, EntityManagerInterface $entityManager)
     {
-        $user = $userManager->getUserById($id);
         $conferences = $user->getConferences();
 
         foreach ($conferences as $conference) {
@@ -103,7 +103,7 @@ class SecurityController extends AbstractController
 
         $entityManager->remove($user);
         $entityManager->flush();
-        //return $this->redirectToRoute('home');
+        return $this->redirectToRoute('home');
     }
 
 }

@@ -2,17 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a9f3460-e798-4450-b128-b0c5e0fa4b32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/templates/security/login.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/packages/dev/hautelook_alice.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/packages/dev/nelmio_alice.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/packages/sensio_framework_extra.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/packages/test/hautelook_alice.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/packages/test/nelmio_alice.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fixtures/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/Command/CreateAdminCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/src/fixtures/user.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/Entity/Conference.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Entity/Conference.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/DataFixtures/AppFixtures.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/DataFixtures/UserFixtures.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/Manager/UserManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Manager/UserManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/src/symfony.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,10 +48,10 @@
           <entry key="conf" value="2" />
           <entry key="json" value="1" />
           <entry key="opt" value="3" />
-          <entry key="php" value="20" />
+          <entry key="php" value="21" />
           <entry key="twig" value="4" />
           <entry key="yaml" value="13" />
-          <entry key="yml" value="10" />
+          <entry key="yml" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -53,30 +59,30 @@
           <entry key="CSV" value="1" />
           <entry key="Dockerfile" value="4" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="20" />
+          <entry key="PHP" value="21" />
           <entry key="PLAIN_TEXT" value="8" />
           <entry key="SmartyConfig" value="2" />
           <entry key="Twig" value="4" />
-          <entry key="YAML" value="23" />
+          <entry key="YAML" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Dockerfile" value="76" />
           <entry key="conf" value="14" />
-          <entry key="php" value="1332" />
+          <entry key="php" value="1473" />
           <entry key="twig" value="223" />
-          <entry key="yaml" value="328" />
-          <entry key="yml" value="159" />
+          <entry key="yaml" value="329" />
+          <entry key="yml" value="282" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Dockerfile" value="76" />
-          <entry key="PHP" value="1332" />
+          <entry key="PHP" value="1473" />
           <entry key="SmartyConfig" value="14" />
           <entry key="Twig" value="223" />
-          <entry key="YAML" value="487" />
+          <entry key="YAML" value="611" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -91,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4370">
-              <caret line="190" column="37" selection-start-line="190" selection-start-column="37" selection-end-line="190" selection-end-column="37" />
+            <state relative-caret-position="510">
+              <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
               <folding>
                 <element signature="e#30#78#0#PHP" expanded="true" />
               </folding>
@@ -125,22 +131,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/src/Entity/Conference.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-              <folding>
-                <element signature="e#30#78#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/src/Controller/SecurityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="483">
+              <caret line="97" column="47" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
               <folding>
                 <element signature="e#34#54#0#PHP" expanded="true" />
               </folding>
@@ -148,11 +142,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/src/Controller/HomeController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/src/Command/CreateAdminCommand.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+            <state relative-caret-position="784">
+              <caret line="53" column="76" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="76" />
+              <folding>
+                <element signature="e#31#51#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/src/fixtures/user.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -166,27 +172,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/config/packages/security.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+            <state relative-caret-position="715">
+              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/src/DataFixtures/UserFixtures.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/src/DataFixtures/AppFixtures.php">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -196,6 +188,7 @@
       <find>__</find>
       <find>setRol</find>
       <find>mail</find>
+      <find>usern</find>
     </findStrings>
     <replaceStrings>
       <replace>Email</replace>
@@ -231,11 +224,13 @@
         <option value="$PROJECT_DIR$/src/src/Form/UpdateUserType.php" />
         <option value="$PROJECT_DIR$/src/src/Entity/Conference.php" />
         <option value="$PROJECT_DIR$/src/src/Manager/UserManager.php" />
-        <option value="$PROJECT_DIR$/src/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/config/routes.yaml" />
-        <option value="$PROJECT_DIR$/src/config/packages/security.yaml" />
-        <option value="$PROJECT_DIR$/src/src/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/src/src/Controller/HomeController.php" />
+        <option value="$PROJECT_DIR$/src/src/fixtures/user.yml" />
+        <option value="$PROJECT_DIR$/src/src/Controller/SecurityController.php" />
+        <option value="$PROJECT_DIR$/src/src/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/src/Command/CreateAdminCommand.php" />
+        <option value="$PROJECT_DIR$/src/config/packages/security.yaml" />
       </list>
     </option>
   </component>
@@ -359,14 +354,14 @@
               <item name="ASID20.2-projet-FAH" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Command" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ASID20.2-projet-FAH" type="b2602c69:ProjectViewProjectNode" />
               <item name="ASID20.2-projet-FAH" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DataFixtures" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ASID20.2-projet-FAH" type="b2602c69:ProjectViewProjectNode" />
@@ -467,7 +462,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34757000" />
+    <option name="totallyTimeSpent" value="37510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -501,13 +496,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Documents/Cours/test/symfony-demo-master/docker/mysqlconf/my.cnf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="51" lean-forward="true" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/Cours/test/symfony-demo-master/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -676,38 +664,8 @@
     <entry file="file://$PROJECT_DIR$/src/templates/security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/Entity/Conference.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-          <folding>
-            <element signature="e#30#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/Form/RegisterType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding>
-            <element signature="e#28#48#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/Manager/UserManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="668">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#121#141#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/packages/dev/routing.yaml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -735,12 +693,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/Entity/User.php">
+    <entry file="file://$PROJECT_DIR$/src/src/Entity/Conference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4370">
-          <caret line="190" column="37" selection-start-line="190" selection-start-column="37" selection-end-line="190" selection-end-column="37" />
+        <state relative-caret-position="515">
+          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
           <folding>
             <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/src/Form/RegisterType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding>
+            <element signature="e#28#48#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/src/Manager/UserManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#121#141#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -752,27 +730,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/packages/security.yaml">
+    <entry file="file://$PROJECT_DIR$/src/src/Controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        <state relative-caret-position="207">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/src/fixtures/user.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="40" column="7" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/Controller/SecurityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="483">
+          <caret line="97" column="47" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
           <folding>
             <element signature="e#34#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/src/Controller/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/src/src/Command/CreateAdminCommand.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="784">
+          <caret line="53" column="76" selection-start-line="53" selection-start-column="76" selection-end-line="53" selection-end-column="76" />
+          <folding>
+            <element signature="e#31#51#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
         </state>
       </provider>
     </entry>

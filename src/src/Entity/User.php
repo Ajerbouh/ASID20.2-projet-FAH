@@ -22,13 +22,13 @@ class User implements UserInterface
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstname;
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastname;
 
