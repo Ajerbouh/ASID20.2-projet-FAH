@@ -4,10 +4,11 @@
     width: 100px;
 }
 
-.navbar-inverse {
-    background-color: whitesmoke;
+.navbar {
+    background-image: linear-gradient(#a74240d4, #a9444282,#a944420d);
     border-color: white;
 }
+
 
 .card-header:first-child {
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
