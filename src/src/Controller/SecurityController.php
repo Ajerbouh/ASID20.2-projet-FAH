@@ -7,6 +7,7 @@ use App\Form\LoginUserType;
 use App\Form\RegisterType;
 use App\Form\UpdateUserType;
 use App\Manager\UserManager;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,16 +46,32 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/admin/user/update/{id}", name="update")
-     * @param Request $request
-     * @param UserManager $userManager
-     * @param int $id
-     * @param EntityManagerInterface $entityManager
+     * @Route("/login", name="login")
+     * @param AuthenticationUtils $authenticationUtils
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function update(Request $request, UserManager $userManager, int $id, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function login(AuthenticationUtils $authenticationUtils)
     {
-        $user = $userManager->getUserById($id);
+        $user = new User();
+        $form = $this->createForm(LoginUserType::class, $user);
+
+        return $this->render('security/login.html.twig', [
+            'error' => $authenticationUtils->getLastAuthenticationError(),
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/user/update/{id}", name="update")
+     * @param Request $request
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @ParamConverter("update", options={"mapping"={"id"="id"}})
+     */
+    public function update(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder)
+    {
         $form = $this->createForm(UpdateUserType::class, $user);
         $form->handleRequest($request);
 
@@ -71,18 +88,16 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/login", name="login")
-     * @param AuthenticationUtils $authenticationUtils
+     * @Route("/profile", name="profile")
+     * @param UserRepository $userRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function login(AuthenticationUtils $authenticationUtils)
+    public function list(UserRepository $userRepository)
     {
-        $user = new User();
-        $form = $this->createForm(LoginUserType::class, $user);
+        $users = $userRepository->findAll();
 
-        return $this->render('security/login.html.twig', [
-            'error' => $authenticationUtils->getLastAuthenticationError(),
-            'form' => $form->createView(),
+        return $this->render('User/profile.html.twig', [
+            'users' => $users,
         ]);
     }
 
@@ -103,7 +118,7 @@ class SecurityController extends AbstractController
 
         $entityManager->remove($user);
         $entityManager->flush();
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('profile');
     }
 
 }
