@@ -28,9 +28,11 @@ class ConferenceRepository extends ServiceEntityRepository
         $qb
             ->addSelect('c.id, c.title, c.address, (c.id) as id_conf, (c.title) as titleConf')
             ->join('c.ratings', 'r')
-            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote, () as UserRating')
+            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
             ->groupBy('c.id')
             ->orderBy('rating', 'DESC')
+            ->setParameter('user_id', $userId)
             ->setFirstResult( $offset )
             ->setMaxResults( $limit )
         ;
@@ -39,19 +41,6 @@ class ConferenceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-
-         /*
-        return $this->createQueryBuilder('c')
-            ->leftJoin("c.ratings", "ratings")
-            ->Where('c.id IS NOT NULL')
-            ->GroupBy('c.id')
-            ->having('count(ratings) = 0')
-            ->setFirstResult( $offset )
-            ->setMaxResults( $limit )
-            ->getQuery()
-            ->getResult()
-        ;
-        */
     }
 
 
