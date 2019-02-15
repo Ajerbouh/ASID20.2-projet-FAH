@@ -26,7 +26,7 @@ class ConferenceRepository extends ServiceEntityRepository
 
         $qb = $this->createQueryBuilder('c');
         $qb
-            ->addSelect('c.id, c.title, c.address, (c.id) as id_conf, (c.title) as titleConf')
+            ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
             ->join('c.ratings', 'r')
             ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
             ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
@@ -48,18 +48,26 @@ class ConferenceRepository extends ServiceEntityRepository
 
     public function findUnrated()
     {
-        return $this->createQueryBuilder('c')
-            ->leftJoin("c.ratings", "ratings")
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
+            ->join('c.ratings', 'r')
+            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
             ->Where('c.id IS NOT NULL')
-            ->GroupBy('c.id')
+            ->groupBy('c.id')
             ->having('count(ratings) = 0')
-            ->getQuery()
-            ->getResult()
+            ->orderBy('rating', 'DESC')
         ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 
     public function findRated()
     {
+        /*
         return $this->createQueryBuilder('c')
             ->leftJoin("c.ratings", "ratings")
             ->Where('c.id IS NOT NULL')
@@ -68,6 +76,22 @@ class ConferenceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+        */
+        $qb = $this->createQueryBuilder('c');
+        $qb
+            ->addSelect('c.id, c.title, c.address, c.ratings, (c.id) as id_conf, (c.title) as titleConf')
+            ->join('c.ratings', 'r')
+            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('CASE WHEN r.user.id = :user_id THEN r.user.id')
+            ->Where('c.id IS NOT NULL')
+            ->groupBy('c.id')
+            ->having('count(ratings) > 0')
+            ->orderBy('rating', 'DESC')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 
     public function searchKeyword(string $keyword)
