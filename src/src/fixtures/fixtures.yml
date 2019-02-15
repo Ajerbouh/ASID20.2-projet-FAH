@@ -6,7 +6,7 @@ App\Entity\User:
     password: <password()>
 App\Entity\Conference:
   conference_{1..25}:
-    title: <words($nb = 3, $asText = true)>
+    title: <words(3,true)>
     address: <address()>
     rating: '@rating*'
 App\Entity\Rating:
