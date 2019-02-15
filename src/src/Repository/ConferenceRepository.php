@@ -19,38 +19,24 @@ class ConferenceRepository extends ServiceEntityRepository
         parent::__construct($registry, Conference::class);
     }
     
-    public function findPage( int $numberPerPage, int $numberPage )
+    public function findPage( int $numberPerPage, int $numberPage, int $userId )
     {
         $limit  = $numberPerPage;
         $offset = $numberPerPage * $numberPage;
 
-        // var_dump($limit);
-        // var_dump($offset);
-
-        // select conferences with average for each conference
-        /*
-        $qb = $this->createQueryBuilder('c');
-        
-        $qb
-            ->select('c, u, AVG(ratings.value) as rating')
-            ->join("c.ratings", "ratings")
-            ->join("ratings.user", "u")
-            ->orderBy('rating', 'DESC')
-        ;
-        */
-
         $qb = $this->createQueryBuilder('c');
         $qb
-            ->addSelect('c.id, c.title, (c.id) as id_conf, (c.title) as titleConf')
+            ->addSelect('c.id, c.title, c.address, (c.id) as id_conf, (c.title) as titleConf')
             ->join('c.ratings', 'r')
-            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote')
+            ->addSelect('AVG(r.value) as rating', 'COUNT(r.id) as numberVote, () as UserRating')
             ->groupBy('c.id')
             ->orderBy('rating', 'DESC')
             ->setFirstResult( $offset )
             ->setMaxResults( $limit )
         ;
 
-        return $qb->getQuery()
+        return $qb
+            ->getQuery()
             ->getResult()
         ;
 
