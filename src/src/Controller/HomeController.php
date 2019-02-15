@@ -42,7 +42,7 @@ class HomeController extends AbstractController
             $offset
         );
         */
-        $conferences = $conferenceRepository->findPage( $numberPerPage, $numberPage );
+        $conferences = $conferenceRepository->findPage( $numberPerPage, $numberPage, $this->getUser()->getId() );
         
         // echo '<pre>';
         // var_dump($conferences);
