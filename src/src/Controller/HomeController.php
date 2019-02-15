@@ -13,6 +13,8 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @param ConferenceRepository $conferenceRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ConferenceRepository $conferenceRepository)
     {
@@ -21,6 +23,9 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/page/{numPage}", name="page")
+     * @param ConferenceRepository $conferenceRepository
+     * @param int $numberPage
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function page(ConferenceRepository $conferenceRepository, int $numberPage)
     {
